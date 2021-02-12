@@ -5,7 +5,7 @@ import 'package:mypokemon/Screens/Splash/SplashScreen.dart';
 void main() {
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SplashScreen(),));
+    theme: ThemeData(primaryColor: Colors.red),
+    home: SplashScreen(),
+  ));
 }
-
-

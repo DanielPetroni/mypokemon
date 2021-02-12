@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mypokemon/Screens/Homepage/HomepageScreen.dart';
 import 'package:mypokemon/componentes/buttonsSignupSignin.dart';
 import 'package:mypokemon/controller/LoginController.dart';
 import 'package:mypokemon/controller/UserController.dart';
@@ -53,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 10.0),
                   TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(), labelText: 'E-mail')),
@@ -87,8 +89,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center)),
-                          onTap: () {}),
-                    )
+                          onTap: _.getIsFetching()
+                              ? null
+                              : () {
+                                  Get.find<LoginController>().setFetching(true);
+                                  UserController().signin(
+                                      _nameController.text,
+                                      _emailController.text,
+                                      _passwordController.text,
+                                      onSucess: (message) {
+                                    Get.find<LoginController>()
+                                        .setFetching(false);
+                                    Get.rawSnackbar(
+                                        backgroundColor: Colors.red,
+                                        titleText: Text(
+                                          message,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        messageText: Text(''));
+                                  });
+                                }))
                   : Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: GestureDetector(
@@ -110,10 +134,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? null
                               : () {
                                   Get.find<LoginController>().setFetching(true);
-                                  UserController().login(_emailController.text,
+                                  UserController().signup(_emailController.text,
                                       _passwordController.text,
-                                      onSucess: (response) {},
-                                      onFail: (message) {
+                                      onSucess: (user) {
+                                        print(user.name);
+                                    Get.off(HomePageScreen(user));
+                                  }, onFail: (message) {
                                     Get.find<LoginController>()
                                         .setFetching(false);
                                     Get.rawSnackbar(
