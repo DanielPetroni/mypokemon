@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mypokemon/Screens/SplashScreen.dart';
+import 'package:get/get.dart';
+import 'package:mypokemon/Screens/Splash/SplashScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SplashScreen(),));
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MyPokemon',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SplashScreen(),
-    );
-  }
-}
+

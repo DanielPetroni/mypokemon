@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mypokemon/Screens/LoginScreen.dart';
+import 'package:get/get.dart';
+import 'package:mypokemon/Screens/Login/LoginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,9 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-          (Route<dynamic> route) => false);
+      Get.to(LoginScreen());
     });
   }
 
