@@ -18,8 +18,9 @@ class _ButtonSignUpSigninState extends State<ButtonSignUpSignin> {
               init: LoginController(),
               builder: (_) {
                 return Text(
-                  'SignUp',
+                  'SignIn',
                   style: TextStyle(
+                      fontFamily: 'PokemonSolid',
                       fontSize: 22.0,
                       color: _.getSignin() ? Colors.black : Colors.red),
                 );
@@ -30,8 +31,9 @@ class _ButtonSignUpSigninState extends State<ButtonSignUpSignin> {
             child: GetBuilder<LoginController>(
               builder: (_) {
                 return Text(
-                  'SignIn',
+                  'SignUp',
                   style: TextStyle(
+                      fontFamily: 'PokemonSolid',
                       fontSize: 22.0,
                       color: _.getSignin() ? Colors.red : Colors.black),
                 );

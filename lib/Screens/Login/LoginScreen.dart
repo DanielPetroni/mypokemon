@@ -4,6 +4,7 @@ import 'package:mypokemon/Screens/Homepage/HomepageScreen.dart';
 import 'package:mypokemon/componentes/buttonsSignupSignin.dart';
 import 'package:mypokemon/controller/LoginController.dart';
 import 'package:mypokemon/controller/UserController.dart';
+import 'package:mypokemon/model/User.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final c = Get.put(UserController(), permanent: true);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.red[200],
@@ -93,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? null
                               : () {
                                   Get.find<LoginController>().setFetching(true);
-                                  UserController().signin(
+                                  UserController().signup(
                                       _nameController.text,
                                       _emailController.text,
                                       _passwordController.text,
@@ -134,11 +136,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? null
                               : () {
                                   Get.find<LoginController>().setFetching(true);
-                                  UserController().signup(_emailController.text,
+                                  UserController().signin(_emailController.text,
                                       _passwordController.text,
-                                      onSucess: (user) {
-                                        print(user.name);
-                                    Get.off(HomePageScreen(user));
+                                      onSucess: (User user) {
+                                    c.setUser(user);
+                                    c.setList(user.listPokemon);
+                                    Get.off(HomePageScreen());
                                   }, onFail: (message) {
                                     Get.find<LoginController>()
                                         .setFetching(false);
