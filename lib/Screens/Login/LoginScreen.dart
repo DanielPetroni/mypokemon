@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.red[200],
       body: Padding(
-        padding: EdgeInsets.only(top: size.height * 0.1),
+        padding: EdgeInsets.only(top: size.height * 0.04),
         child: ListView(children: [
           Image.asset(
             'assets/images/ash.png',
@@ -120,8 +120,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           IconButton(
                               icon: Icon(
                                   _.getIsObscure()
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
                                   color: Colors.white),
                               onPressed: () {
                                 _.setObscure(!_.getIsObscure());

@@ -22,7 +22,7 @@ class _NewPokemonState extends State<NewPokemon> {
     return Scaffold(
       backgroundColor: Colors.red[200],
       body: ListView(
-        padding: EdgeInsets.only(top: size.height * 0.15),
+        padding: EdgeInsets.only(top: size.height * 0.10),
         children: [
           Image.asset('assets/images/pokebola.png', height:  size.height * 0.2),
           Padding(
