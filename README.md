@@ -17,9 +17,9 @@
 ![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/LoginScreen1.png)
 ![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/LoginScreen2.png)
 
-![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen1.png)
-![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen2.png)
-![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen3.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomePageScreen1.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomePageScreen1.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomePageScreen1.png)
 
 ![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/PokedexScreen1.png)
 ![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/PokedexScreen2.png)
