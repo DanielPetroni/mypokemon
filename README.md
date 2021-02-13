@@ -12,19 +12,20 @@
 - Para pegar fotos na galeria foi usado o package image_picker .
 
 # Screenshots
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/SplashScreen.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/SplashScreen.png)
 
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/LoginScreen.png)
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/LoginScreen2.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/LoginScreen1.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/LoginScreen2.png)
 
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/HomeScreen1.png)
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/HomeScreen2.png)
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/HomeScreen3.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen1.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen2.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/HomeScreen3.png)
 
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/PokedexScreen1.png)
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/PokedexScreen2.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/PokedexScreen1.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/PokedexScreen2.png)
 
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/NewPokemonScreen.png)
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/EditPokemonScreen.png)
-
-![HomePage](https://github.com/DanielPetroni/dmjnt_company/blob/main/Screenshots/ViewDetailsScreen.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/NewPokemonScreen.png)
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/EditPokemonScreen.png)
+            
+![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/ViewDetailsScreen.png)
+        
