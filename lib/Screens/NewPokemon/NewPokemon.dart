@@ -9,7 +9,7 @@ class NewPokemon extends StatefulWidget {
 }
 
 class _NewPokemonState extends State<NewPokemon> {
-  final userController = Get.put(UserController());
+  final userController = Get.put(UserController(), permanent: true);
   final cameraController = Get.put(CameraController());
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController = TextEditingController();

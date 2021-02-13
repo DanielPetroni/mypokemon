@@ -79,7 +79,6 @@ class UserController extends GetxController {
     Response response = await PokemonRepository().deletePokemon(id, index);
     if (response.statusCode == 200) {
       print(response.body);
-      onSucess(response.body["message"]);
     } else if (response.statusCode == 400) {
       onFail(response.body["message"]);
     }

@@ -80,19 +80,7 @@ class _ListCardState extends State<ListCard> {
                               Get.back();
                               userController.deletePokemon(
                                   userController.user.value.id, index,
-                                  onSucess: (message) {
-                                Get.rawSnackbar(
-                                    backgroundColor: Colors.green,
-                                    titleText: Text(
-                                      message,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    messageText: Text(''));
-                              }, onFail: (message) {
+                                  onFail: (message) {
                                 Get.rawSnackbar(
                                     backgroundColor: Colors.red,
                                     titleText: Text(

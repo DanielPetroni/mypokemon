@@ -5,15 +5,17 @@ import 'package:mypokemon/componentes/ListCard.dart';
 import 'package:mypokemon/controller/UserController.dart';
 
 // ignore: must_be_immutable
-class HomePageScreen extends StatefulWidget {
+class PokedexScreen extends StatefulWidget {
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  _PokedexScreenState createState() => _PokedexScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
-  final c = Get.put(UserController(), permanent: true);
+class _PokedexScreenState extends State<PokedexScreen> {
+  final userController = Get.put(UserController(), permanent: true);
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Colors.red,
@@ -25,23 +27,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
         body: SingleChildScrollView(
           child: Stack(children: <Widget>[
             Container(
-              padding: EdgeInsets.only(top: 80.0, left: 20.0),
+              width: double.infinity,
+              padding: EdgeInsets.only(top: 80.0),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Obx(
-                      () => Text(
-                        'Seja bem vindo, ${c.user.value.name}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'PokemonSolid',
-                          fontSize: 20.0,
-                        ),
+                    Text(
+                      'Área pokédex',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'PokemonSolid',
+                        fontSize: 20.0,
                       ),
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      'Segue abaixo sua pokédex',
+                      'Segue abaixo todos seus pokemons',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
@@ -68,12 +69,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Obx(
                             () => GridView.builder(
-                                itemCount: c.listPokemon.length,
+                                itemCount: userController.listPokemon.length,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2),
                                 itemBuilder: (context, index) {
-                                  return ListCard(index, c.listPokemon);
+                                  return ListCard(index, userController.listPokemon);
                                 }),
                           ),
                         ),

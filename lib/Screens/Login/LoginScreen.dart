@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mypokemon/Screens/Homepage/HomepageScreen.dart';
+import 'package:mypokemon/Screens/HomePage/HomePage.dart';
+import 'package:mypokemon/Screens/NavigationScreen/NavigationScreen.dart';
 import 'package:mypokemon/componentes/buttonsSignupSignin.dart';
 import 'package:mypokemon/controller/LoginController.dart';
 import 'package:mypokemon/controller/UserController.dart';
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       onSucess: (User user) {
                                     c.setUser(user);
                                     c.setList(user.listPokemon);
-                                    Get.off(HomePageScreen());
+                                    Get.off(NavigationScreen());
                                   }, onFail: (message) {
                                     Get.find<LoginController>()
                                         .setFetching(false);
