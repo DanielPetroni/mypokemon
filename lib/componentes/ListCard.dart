@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mypokemon/Screens/EditPokemon/EditPokemon.dart';
 import 'package:mypokemon/controller/UserController.dart';
 import 'package:mypokemon/model/Pokemon.dart';
 
@@ -33,7 +34,7 @@ Color whatcolor(String type) {
 }
 
 class _ListCardState extends State<ListCard> {
-  final c = Get.put(UserController());
+  final userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     int index = widget.index;
@@ -44,10 +45,71 @@ class _ListCardState extends State<ListCard> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            '# 00${index + 1}',
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontFamily: 'PokemonSolid'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '# 00${index + 1}',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'PokemonSolid'),
+              ),
+              PopupMenuButton(
+                  color: Colors.red[300],
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                  itemBuilder: (context) => [
+                        PopupMenuItem(
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                Get.back();
+                                Get.to(EditPokemon(index));
+                              }),
+                        ),
+                        PopupMenuItem(
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Get.back();
+                              userController.deletePokemon(
+                                  userController.user.value.id, index,
+                                  onSucess: (message) {
+                                Get.rawSnackbar(
+                                    backgroundColor: Colors.green,
+                                    titleText: Text(
+                                      message,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    messageText: Text(''));
+                              }, onFail: (message) {
+                                Get.rawSnackbar(
+                                    backgroundColor: Colors.red,
+                                    titleText: Text(
+                                      message,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    messageText: Text(''));
+                              });
+                            },
+                          ),
+                        )
+                      ]),
+            ],
           ),
           Container(
             width: double.infinity,
@@ -63,13 +125,13 @@ class _ListCardState extends State<ListCard> {
                 listPokemon[index].pathImage.isEmpty == true
                     ? Image.asset(
                         'assets/images/pokebola_fechada.png',
-                        height: 100.0,
-                        width: 100.0,
+                        height: 80.0,
+                        width: 80.0,
                       )
                     : Image.file(
                         File(listPokemon[index].pathImage),
-                        height: 100.0,
-                        width: 100.0,
+                        height: 80.0,
+                        width: 80.0,
                       ),
               ],
             ),

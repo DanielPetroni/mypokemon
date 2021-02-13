@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     final c = Get.put(UserController(), permanent: true);
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Get.find<LoginController>()
                                         .setFetching(false);
                                     Get.rawSnackbar(
-                                        backgroundColor: Colors.red,
+                                        backgroundColor: Colors.green,
                                         titleText: Text(
                                           message,
                                           style: TextStyle(
