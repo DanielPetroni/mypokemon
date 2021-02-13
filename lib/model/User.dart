@@ -1,3 +1,5 @@
+import 'package:mypokemon/model/Pokemon.dart';
+
 class User {
   String id;
   String name;
@@ -30,24 +32,3 @@ class User {
   }
 }
 
-class Pokemon {
-  String name;
-  String type;
-  String descryption;
-
-  Pokemon({this.name, this.type, this.descryption});
-
-  Pokemon.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    type = json['type'];
-    descryption = json['descryption'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['type'] = this.type;
-    data['descryption'] = this.descryption;
-    return data;
-  }
-}
