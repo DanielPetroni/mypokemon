@@ -21,15 +21,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
             : PokedexScreen(),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: navigationController.currentIndex.value,
-          onTap: navigationController.updatePage,
+          onTap: (index) => navigationController.updatePage(index),
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Pokedex',
+              icon: Icon(Icons.list),
+              label: 'Pokédex',
             ),
           ],
         ),
