@@ -24,14 +24,20 @@ class _NewPokemonState extends State<NewPokemon> {
       body: ListView(
         padding: EdgeInsets.only(top: size.height * 0.15),
         children: [
-          Image.asset('assets/images/pokebola.png', height: 200.0),
+          Image.asset('assets/images/pokebola.png', height:  size.height * 0.2),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+            padding:EdgeInsets.only(
+                left: size.width * 0.02,
+                right: size.width * 0.02,
+                bottom: size.height * 0.02),
             child: Card(
                 elevation: 8.0,
                 child: Padding(
                     padding:
-                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+                        EdgeInsets.only(
+                        top: size.height * 0.03,
+                        left: size.width * 0.02,
+                        right: size.width * 0.02),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -95,7 +101,7 @@ class _NewPokemonState extends State<NewPokemon> {
                                   )
                                 : Image.file(
                                     cameraController.image.value,
-                                    height: 150,
+                                    height: size.height * 0.15
                                   ))
                           ]),
                     ))),

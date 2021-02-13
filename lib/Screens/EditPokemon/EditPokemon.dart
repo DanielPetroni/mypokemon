@@ -24,20 +24,24 @@ class _EditPokemon extends State<EditPokemon> {
     int index = widget.index;
     Size size = MediaQuery.of(context).size;
 
-
     return Scaffold(
       backgroundColor: Colors.red[200],
       body: ListView(
         padding: EdgeInsets.only(top: size.height * 0.15),
         children: [
-          Image.asset('assets/images/pokebola.png', height: 200.0),
+          Image.asset('assets/images/pokebola.png', height: size.height * 0.2),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+            padding: EdgeInsets.only(
+                left: size.width * 0.02,
+                right: size.width * 0.02,
+                bottom: size.height * 0.02),
             child: Card(
                 elevation: 8.0,
                 child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+                    padding: EdgeInsets.only(
+                        top: size.height * 0.03,
+                        left: size.width * 0.02,
+                        right: size.width * 0.02),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -51,7 +55,6 @@ class _EditPokemon extends State<EditPokemon> {
                             ),
                             SizedBox(height: 20.0),
                             TextFormField(
-                      
                                 validator: (value) {
                                   if (value.isEmpty)
                                     return "Campo nome é obrigatório!";
@@ -61,7 +64,8 @@ class _EditPokemon extends State<EditPokemon> {
                                 controller: _nameController,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
-                                  hintText: userController.listPokemon[index].name,
+                                  hintText:
+                                      userController.listPokemon[index].name,
                                   border: OutlineInputBorder(),
                                   labelText: 'Nome',
                                 )),
@@ -128,9 +132,8 @@ class _EditPokemon extends State<EditPokemon> {
                     _nameController.text,
                     _typeController.text,
                     _descryptionController.text,
-                    cameraController.image.value.path, 
-                    onSucess: (message) {
-                 Get.rawSnackbar(
+                    cameraController.image.value.path, onSucess: (message) {
+                  Get.rawSnackbar(
                       backgroundColor: Colors.green,
                       titleText: Text(
                         message,

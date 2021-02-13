@@ -12,10 +12,10 @@ class PokedexScreen extends StatefulWidget {
 
 class _PokedexScreenState extends State<PokedexScreen> {
   final userController = Get.put(UserController(), permanent: true);
-  
+
   @override
   Widget build(BuildContext context) {
-    
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Colors.red,
@@ -24,65 +24,66 @@ class _PokedexScreenState extends State<PokedexScreen> {
           label: Text("Pokemon"),
         ),
         backgroundColor: Colors.red,
-        body: SingleChildScrollView(
-          child: Stack(children: <Widget>[
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(top: 80.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Área pokédex',
-                      style: TextStyle(
+        body: Stack(children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(top: size.height * 0.09),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Área pokédex',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'PokemonSolid',
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    'Segue abaixo todos seus pokemons',
+                    style: TextStyle(
                         color: Colors.white,
-                        fontFamily: 'PokemonSolid',
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Text(
-                      'Segue abaixo todos seus pokemons',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontStyle: FontStyle.italic),
-                    ),
-                  ]),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 180.00),
-              height: MediaQuery.of(context).size.height,
-              width: double.infinity,
-              color: Colors.transparent,
-              child: Container(
-                  decoration: new BoxDecoration(
-                      color: Colors.red[200],
-                      borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(40.0),
-                        topRight: const Radius.circular(40.0),
-                      )),
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Obx(
-                            () => GridView.builder(
+                        fontSize: 18.0,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ]),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: size.height * 0.2),
+            height: size.height,
+            width: double.infinity,
+            color: Colors.transparent,
+            child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.red[200],
+                    borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(40.0),
+                      topRight: const Radius.circular(40.0),
+                    )),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Obx(
+                          () => Container(
+                            child: GridView.builder(
                                 itemCount: userController.listPokemon.length,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2),
                                 itemBuilder: (context, index) {
-                                  return ListCard(index, userController.listPokemon);
+                                  return ListCard(
+                                      index, userController.listPokemon);
                                 }),
                           ),
                         ),
-                      )
-                    ],
-                  )),
-            )
-          ]),
-        ));
+                      ),
+                    )
+                  ],
+                )),
+          )
+        ]));
   }
 }
