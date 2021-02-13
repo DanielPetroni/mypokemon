@@ -22,11 +22,17 @@ class UserController extends GetxController {
   }
 
   Future<void> signup(String name, String email, String password,
-      {Function onSucess}) async {
+      {Function onSucess, Function onFail}) async {
     Response response =
         await UserRepository().signupUser(name, email, password);
-    onSucess(response.body["message"]);
+    if (response.statusCode == 200) {
+      onSucess(response.body["message"]);
+    } else if (response.statusCode == 400) {
+      onFail(response.body["message"]);
+    }
   }
+
+ 
 
   void addPokemon(
       String id, String name, String type, String descryption, String pathImage,
