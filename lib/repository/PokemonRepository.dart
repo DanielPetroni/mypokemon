@@ -47,7 +47,7 @@ class PokemonRepository extends GetConnect {
 
   Future<Response> deletePokemon(String id, int index) async {
     try {
-      Response response = await post(url + 'deletePokemon', {"index": index},
+      Response response = await delete(url + 'deletePokemon/$index',
           headers: {"id": id});
       return response;
     } catch (e) {
