@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mypokemon/Screens/HomePage/HomePage.dart';
-import 'package:mypokemon/Screens/NavigationScreen/NavigationScreen.dart';
+import 'package:mypokemon/Screens/Navigation/NavigationScreen.dart';
 import 'package:mypokemon/componentes/buttonsSignupSignin.dart';
 import 'package:mypokemon/controller/LoginController.dart';
 import 'package:mypokemon/controller/UserController.dart';
@@ -16,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     final c = Get.put(UserController(), permanent: true);
@@ -47,26 +46,90 @@ class _LoginScreenState extends State<LoginScreen> {
                     init: LoginController(),
                     builder: (_) {
                       return Visibility(
-                        child: TextFormField(
-                          controller: _nameController,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(), labelText: 'Nome'),
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.red[200],
+                              borderRadius: BorderRadius.circular(14)),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  style: TextStyle(color: Colors.white),
+                                  controller: _nameController,
+                                  decoration: InputDecoration(
+                                      icon: Icon(Icons.minimize_sharp,
+                                          color: Colors.white),
+                                      hintText: "Nome",
+                                      hintStyle: TextStyle(color: Colors.white),
+                                      border: InputBorder.none),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         visible: _.getSignin(),
                       );
                     },
                   ),
                   SizedBox(height: 10.0),
-                  TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), labelText: 'E-mail')),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.red[200],
+                        borderRadius: BorderRadius.circular(14)),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            style: TextStyle(color: Colors.white),
+                            controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                icon: Icon(Icons.person, color: Colors.white),
+                                hintText: "E-mail",
+                                hintStyle: TextStyle(color: Colors.white),
+                                border: InputBorder.none),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10.0),
-                  TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), labelText: 'Senha')),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.red[200],
+                        borderRadius: BorderRadius.circular(14)),
+                    child: GetBuilder<LoginController>(builder: (_) {
+                      return Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              controller: _passwordController,
+                              style: TextStyle(color: Colors.white),
+                              obscureText: _.getIsObscure(),
+                              decoration: InputDecoration(
+                                  icon: Icon(Icons.lock, color: Colors.white),
+                                  hintText: "Senha",
+                                  hintStyle: TextStyle(color: Colors.white),
+                                  border: InputBorder.none),
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                          IconButton(
+                              icon: Icon(
+                                  _.getIsObscure()
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.white),
+                              onPressed: () {
+                                _.setObscure(!_.getIsObscure());
+                              })
+                        ],
+                      );
+                    }),
+                  ),
                 ]),
               ),
             ),
@@ -106,6 +169,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .setFetching(false);
                                     Get.rawSnackbar(
                                         backgroundColor: Colors.green,
+                                        titleText: Text(
+                                          message,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        messageText: Text(''));
+                                  }, onFail: (message) {
+                                    Get.find<LoginController>()
+                                        .setFetching(false);
+                                    Get.rawSnackbar(
+                                        backgroundColor: Colors.red,
                                         titleText: Text(
                                           message,
                                           style: TextStyle(
