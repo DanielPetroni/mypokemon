@@ -11,7 +11,7 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
-  final navigationController = Get.put(NavigatorControler(), permanent: true);
+  final navigationController = Get.put(NavigatorControler());
   @override
   Widget build(BuildContext context) {
     return Obx(
