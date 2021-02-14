@@ -31,7 +31,7 @@ dependencies:
   get: ^3.24.0
   dio: ^3.0.10
   image_picker: ^0.6.7+22
-
+  path_provider: ^1.6.27
 dev_dependencies:
   flutter_test:
     sdk: flutter
