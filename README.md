@@ -9,7 +9,8 @@
 
 ### DevTools
 - Para controle de estado e injeção de dependências foi usado o package Get.
-- Para pegar fotos na galeria foi usado o package image_picker .
+- Para pegar fotos na galeria foi usado o package image_picker.
+- Para pegar o path do projeto no dispositivo foi usado o package path_provider.
 
 # Screenshots
 ![HomePage](https://github.com/DanielPetroni/mypokemon/blob/main/Screenshots/SplashScreen.png)
