@@ -34,7 +34,7 @@ class ViewDetailsScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10.0),
             color: Colors.white,
-        
+            height: size.height,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
