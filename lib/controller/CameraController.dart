@@ -8,12 +8,20 @@ class CameraController extends GetxController {
   final picker = ImagePicker();
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    String fileName = pickedFile.path.split('/').last;
     final Directory directory = await getApplicationDocumentsDirectory();
     final String path = directory.path;
     if (pickedFile != null) {
-      File picikedCopy = await File(pickedFile.path).copy(path+'ImagesPokemons');
+      Future<bool> exist = Directory('$path/ImagesPokemons').exists();
+      if (exist != true) {
+        Directory(path + '/imagespokemons').create()
+            .then((Directory directory) {
+          print('Criou');
+        }).catchError((e) => print(e));
+      }
+      File picikedCopy =
+          await File(pickedFile.path).copy('$path/imagespokemons/$fileName');
       image.value = File(picikedCopy.path);
-      print(picikedCopy.path);
     } else {
       print('Nenhuma imagem selecionada.');
     }
