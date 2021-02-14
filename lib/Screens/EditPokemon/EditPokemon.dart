@@ -128,7 +128,7 @@ class _EditPokemon extends State<EditPokemon> {
               onTap: () {
                 userController.updatePokemon(
                     userController.user.value.id,
-                    userController.listPokemon[index].name,
+                    index,
                     _nameController.text,
                     _typeController.text,
                     _descryptionController.text,

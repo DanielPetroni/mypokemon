@@ -22,15 +22,14 @@ class PokemonRepository extends GetConnect {
 
   Future<Response> updatePokemon(
       String id,
-      String namePokemon,
+      int indexPokemon,
       String newNamePokemon,
       String typePokemon,
       String descrypitionPokemon,
       String pathImage) async {
-    print('Entrei update' + namePokemon);
     try {
       Response response = await put(url + 'updatePokemon', {
-        "namePokemon": namePokemon,
+        "indexPokemon": indexPokemon,
         "newNamePokemon": newNamePokemon,
         "typePokemon": typePokemon,
         "descryptionPokemon": descrypitionPokemon,

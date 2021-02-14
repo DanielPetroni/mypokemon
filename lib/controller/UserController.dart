@@ -52,23 +52,19 @@ class UserController extends GetxController {
     }
   }
 
-  void updatePokemon(String id, String name, String newname, String type,
+  void updatePokemon(String id, int index, String newname, String type,
       String descryption, String pathImage,
       {Function onSucess, Function onFail}) async {
-    listPokemon.forEach((pokemon) {
-      if (pokemon.name == name) {
-        print('Achou pokemon');
-        newname.isEmpty != true ? pokemon.name = newname : null;
-        type.isEmpty != true ? pokemon.type = type : null;
-        descryption.isEmpty != true ? pokemon.descryption = descryption : null;
+        newname.isEmpty != true ? listPokemon[index].name = newname : null;
+        type.isEmpty != true ?  listPokemon[index].type = type : null;
+        descryption.isEmpty != true ?  listPokemon[index].descryption = descryption : null;
         pathImage.isEmpty != true
-            ? pokemon.pathImage = pathImage
-            : pokemon.pathImage = '';
-      }
-    });
+            ?  listPokemon[index].pathImage = pathImage
+            :  listPokemon[index].pathImage = '';
+    
     listPokemon.refresh();
     Response response = await PokemonRepository()
-        .updatePokemon(id, name, newname, type, descryption, pathImage);
+        .updatePokemon(id, index, newname, type, descryption, pathImage);
     if (response.statusCode == 200) {
       print(response.body);
       onSucess(response.body["message"]);
